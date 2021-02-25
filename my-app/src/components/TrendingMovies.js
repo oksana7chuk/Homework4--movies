@@ -1,13 +1,13 @@
 import  React, {Component} from 'react';
 import TrendingMoviesList from './TrendingMoviesList';
-import * as moviesApi from '../services/moviesListApi';
+import * as moviesApi from '../services/Api';
 
 export default class TrendingMovies extends Component {
     state = {
-        movies: []
+        movies: [],
     }
     componentDidMount(){
-        moviesApi.fetchMovies().then(items=>this.setState({movies}))
+        moviesApi.fetchTrendingMovies().then(items=>this.setState({movies}))
     }
     render(){
         const {movies} = this.state;

@@ -3,7 +3,7 @@ import { Route , Switch, NavLink} from 'react-router-dom';
 import styles from './App.module.css';
 import HomePage from './pages/HomePage'
 // import MoviesPage from  './pages/MoviesPage'
-// import TrendingMoviesList from './components/TrendingMovies'
+import TrendingMovies from './components/TrendingMovies'
 // import axios from 'axios';
 
 // const accessToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYjIwYTA3ZjRjOGM2NmNlMTU1ZTY1MDg5ZTBlNDg5OSIsInN1YiI6IjYwMzRkYTUwZTc4Njg3MDA0MWQyMmI5YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.T0HHSGj_DUFaJ01TDkhYN9C_25mA9kreWmK81jrKZJ0'
@@ -15,7 +15,7 @@ import HomePage from './pages/HomePage'
 //   console.log(response.headers);
 // });
 
-// const getMovies = axios.get('https://developers.themoviedb.org/3/trending/movie/day').then(console.log)
+// const getMovies = axios.get('https://developers.themoviedb.org/3/trending/movie/day?api_key=cb20a07f4c8c66ce155e65089e0e4899').then(console.log)
 
 const App = () => (
 <div>
@@ -28,7 +28,7 @@ const App = () => (
     </div>
   </header>
   <span>
-    {/* <TrendingMoviesList movies={moviesList}/> */}
+    <TrendingMovies/>
   </span>
   <Switch>
       <Route path='/' exact component={HomePage} />
