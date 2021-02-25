@@ -4,10 +4,10 @@ import * as moviesApi from '../services/Api';
 
 export default class TrendingMovies extends Component {
     state = {
-        movies: [],
+        movies: []
     }
     componentDidMount(){
-        moviesApi.fetchTrendingMovies().then(items=>this.setState({movies}))
+        moviesApi.fetchTrendingMovies().then(data=>this.setState({movies: data.items}))
     }
     render(){
         const {movies} = this.state;
@@ -16,7 +16,6 @@ export default class TrendingMovies extends Component {
                 <h1>Trending today</h1>
                 <TrendingMoviesList movies={movies}/>
             </div>
-
         )
     }
-}
+}; 
