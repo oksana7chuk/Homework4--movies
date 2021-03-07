@@ -1,42 +1,34 @@
+/* eslint-disable no-undef */
 import React, {Component} from 'react';
 import styles from '../App.module.css';
+import {Link} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import * as moviesApi from '../services/Api';
+import SearchBox from '../components/SearchBox';
+import SearchedMoviesList from '../components/SearchedMoviesList'
 
 
 export default class MoviesPage extends Component {
-    state = {
-        movies: [],
-        query:''
-    }
-    handleChange = e => {
-      this.setState({
-        query: e.target.value
-      })
-    };
-    handleSubmit = e => {
-     this.props.onSubmit(this.state.query);    //   e.preventDefault();
- 
-      this.setState({query:''})
-    }
+  // eslint-disable-next-line no-undef
+  state = {
+    movies: [],
+  };
+  componentDidMount(){
+    this.fetchSearchedMovies()
+  };
+  
+  fetchSearchedMovies = query => {
+    moviesApi.fetchSearchedMovies(query)
+    .then(({data})=>this.setState({movies: data.results}))
+    .catch()
+  };
     render (){
-      const {query} = this.state;
+      const {movies} = this.state;
       return (
             <div>
-                <h1 className={styles.smallTitle}>Movies</h1>
-                <form  
-                // onSubmit={this.handleSubmit}  
-                className={styles.SearchForm}>
-                    <button type="submit" className={styles.SearchFormButton}>
-                       <span>Search</span>
-                    </button>
-                    <input 
-                      className={styles.SearchFormInput}
-                       onChange={this.handleChange}
-                       value = {query}
-                       type="text"
-                       placeholder="Search movies"
-                    />
-                </form>
+                {/* <SearchBox onSubmit={this.fetchSearchedMovies}/>
+                {movies.length > 0 && <SearchedMoviesList movies={movies}/>} */}
+                {/* <Route path='/movies/:movieId' component={MovieDetailsPage} /> */}
             </div>
         )
     }
