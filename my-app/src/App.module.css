@@ -4,18 +4,18 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
 }
 .smallTitle {
-  padding: 15px;
+  padding: 25px;
 }
 .link {
   text-decoration: none;
   color: rgb(17, 17, 200);
 }
 .activeLink {
-  color: rgb(230, 28, 169);
+  color: rgb(31, 126, 44);
 }
 .SearchFormButton {
   margin-right: 5px;
@@ -33,4 +33,13 @@
   border-color: blue;
   border-radius: 5px;
   font-size: 15px;
+}
+.movieList {
+  list-style: none;
+}
+.movieListItem {
+  font-size: 20px;
+  font-style: italic;
+  text-decoration: none;
+  color: blueviolet;
 }

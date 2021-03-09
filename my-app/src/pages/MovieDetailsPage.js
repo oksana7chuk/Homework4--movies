@@ -18,7 +18,8 @@ export default class MovieDetailsPage extends Component {
     }
     // eslint-disable-next-line no-undef
     handleGoBack = ()=>{
-        this.props.history.push('/');
+        // this.props.history.push('/');
+        console.log(this.props)
     }
     render(){
         const {movie}=this.state;
@@ -26,7 +27,9 @@ export default class MovieDetailsPage extends Component {
         return (
             <div>
                 <div>Movie Details</div>
-                {movie && <Movie {...movie} onGoBack={this.handleGoBack}/>}
+                {movie && <Movie {...movie} 
+                onGoBack={this.handleGoBack}
+                />}
             </div>
            
         );
