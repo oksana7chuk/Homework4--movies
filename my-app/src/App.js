@@ -1,11 +1,16 @@
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
 import { Route , Switch, NavLink} from 'react-router-dom';
+import Loadable from 'react-loadable';
 import styles from './App.module.css';
-import HomePage from './pages/HomePage';
+// import HomePage from './pages/HomePage';
 import TrendingMovies from './components/TrendingMovies';
-import MoviesPage from  './pages/MoviesPage';
-import MovieDetailsPage from './pages/MovieDetailsPage';
+// import MoviesPage from  './pages/MoviesPage';
+// import MovieDetailsPage from './pages/MovieDetailsPage';
 
+
+const AsyncHome = lazy(()=> import('../src/pages/HomePage' /*webpackChunkName: "home-page"*/));
+const AsyncMovieDetails = lazy(()=> import('../src/pages/MovieDetailsPage'/*webpackChunkName: "movie-detailes-page"*/));
+const AsyncMovies = lazy(()=> import('../src/pages/MoviesPage'/*webpackChunkName: "movies-page"*/));
 
 const App = () => (
 <div>
@@ -20,12 +25,15 @@ const App = () => (
   <div>
     <TrendingMovies/>
   </div>
-  <Switch>
-    <Route path='/' exact component={HomePage} />
-    <Route path='/movies/:movieId' component={MovieDetailsPage} />
-    <Route path='/movies/' exact component={MoviesPage} />
-    <Route  component={HomePage} />
-  </Switch>
+  <Suspense fallback={<h1>Loading...</h1>}>
+    <Switch>
+      <Route path='/' exact component={AsyncHome} />
+      <Route path='/movies/:movieId' component={AsyncMovieDetails} />
+      <Route path='/movies/' exact component={AsyncMovies} />
+      <Route  component={AsyncHome}/>
+    </Switch>
+  </Suspense>
+  
 </div>
 );
 
